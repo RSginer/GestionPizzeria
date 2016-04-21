@@ -508,8 +508,7 @@ public class UX extends javax.swing.JFrame {
 
     private void cambiarPreciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarPreciosActionPerformed
         SelectorDeArchivo s = new SelectorDeArchivo();
-        s.seleccionar(evt);
-        
+        p.cargarPrecios(s.seleccionar(evt));
     }//GEN-LAST:event_cambiarPreciosActionPerformed
 
     /**

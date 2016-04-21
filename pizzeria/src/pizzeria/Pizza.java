@@ -5,7 +5,10 @@
  */
 package pizzeria;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -154,7 +157,16 @@ public class Pizza {
              
         return generado;
     }
+    public boolean cargarPrecios(String rutaArchivo){
+        try {
+            BufferedReader lector = new BufferedReader(new FileReader(rutaArchivo));
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Pizza.class.getName()).log(Level.SEVERE, null, ex);
+        }
     
+    return false;
+    }
     public void setTamaño(String tamaño) {
         this.tamaño = tamaño;
     }
