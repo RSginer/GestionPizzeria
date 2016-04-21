@@ -48,6 +48,7 @@ public class Pizza {
     double total;
     String totalFormat;
     double masa;
+    String nombreMasa;
     String tipo;
     String tamaño;
     List<String> listaIngredientes;
@@ -60,6 +61,7 @@ public class Pizza {
     }
 
     public double calculaMasa(String tipo) {
+        this.nombreMasa = tipo;
         double respuesta = 0;
         if (tipo.equalsIgnoreCase("normal")) {
             respuesta = this.precioMasaNormal;
@@ -245,19 +247,13 @@ public class Pizza {
 
     public String pedido() {
         LocalDate hoy = LocalDate.now();
-        String masa = null;
         String ingredientes = null;
-        if (this.masa == 9) {
-            masa = "Normal";
-        } else if (this.masa == 9.5) {
-            masa = "Integral";
-        }
         if (this.listaIngredientes.isEmpty() | this.listaIngredientes.contains("Sin ingrediente extra")) {
             ingredientes = "Ninguno";
         } else {
             ingredientes = this.listaIngredientes.toString();
         }
-        String texto = "PIZZERIA MISLATA - " + hoy + "\n" + "-------------------------------------------------" + "\n" + "Masa: " + " " + this.masa + "€ - " + masa + "\n" + "Tipo: " + " " + this.precioTipoPizza + "€ - " + this.tipo + "\n" + "Ingredientes extra: " + " " + this.precioIngredientes + "€ - " + ingredientes + "\n" + "Tamaño: " + this.tamaño + "\n" + "TOTAL: " + this.totalFormat + " €";
+        String texto = "PIZZERIA MISLATA - " + hoy + "\n" + "-------------------------------------------------" + "\n" + "Masa: " + " " + this.nombreMasa + " € - " + this.masa + "\n" + "Tipo: " + " " + this.precioTipoPizza + "€ - " + this.tipo + "\n" + "Ingredientes extra: " + " " + this.precioIngredientes + "€ - " + ingredientes + "\n" + "Tamaño: " + this.tamaño + "\n" + "TOTAL: " + this.totalFormat + " €";
         return texto;
     }
 

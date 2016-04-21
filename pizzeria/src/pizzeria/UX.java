@@ -156,7 +156,7 @@ public class UX extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tamaño, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                .addComponent(tamaño, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -374,7 +374,8 @@ public class UX extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addComponent(etiquetaTotal)
@@ -451,16 +452,16 @@ public class UX extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MasaNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MasaNormalActionPerformed
-        this.masa.setText(""+p.calculaMasa("normal"));
-        p.setMasa(p.calculaMasa("normal"));
+        this.masa.setText(""+p.calculaMasa("Normal"));
+        p.setMasa(p.calculaMasa("Normal"));
         p.calcularPrecio();
         this.total.setText(p.totalFormat);
         this.ticket.setText(p.pedido());
     }//GEN-LAST:event_MasaNormalActionPerformed
 
     private void MasaIntegralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MasaIntegralActionPerformed
-        this.masa.setText(""+p.calculaMasa("integral"));
-        p.setMasa(p.calculaMasa("integral"));
+        this.masa.setText(""+p.calculaMasa("Integral"));
+        p.setMasa(p.calculaMasa("Integral"));
         p.calcularPrecio();
         this.total.setText(p.totalFormat);
         this.ticket.setText(p.pedido());
