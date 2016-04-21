@@ -12,6 +12,8 @@ import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -137,12 +139,20 @@ public class Pizza {
         return tamaño;
     }
 
-    public void imprimirTicket(int contador) throws IOException {
-        contador++;
+    public boolean generarTicket() throws IOException{
+        int contador=1;
+        boolean generado = false;
         String nombreticket = "ticket-" + contador + ".txt";
-        FileWriter ticket = new FileWriter(nombreticket, true);
-        BufferedWriter impresora = new BufferedWriter (ticket);
-        impresora.write(this.pedido());
+             try (BufferedWriter ticket = new BufferedWriter(new FileWriter(nombreticket))) {
+            ticket.write(this.pedido());
+            ticket.close();
+            contador++;
+            generado=true;
+         } catch (IOException ex) {
+            Logger.getLogger(UX.class.getName()).log(Level.SEVERE, null, ex);
+        }
+             
+        return generado;
     }
     
     public void setTamaño(String tamaño) {
@@ -163,7 +173,9 @@ public class Pizza {
         } else {
             ingredientes = this.listaIngredientes.toString();
         }
-        String texto = "PIZZERIA MISLATA - " + hoy + "\n" + "-----------------------------------------" + "\n" + "Masa: " + " " + this.masa + "€ - " + masa + "\n" + "Tipo: " + " " + this.precioTipoPizza + "€ - " + this.tipo + "\n" + "Ingredientes extra: " + " " + this.precioIngredientes + "€ - " + ingredientes + "\n" + "Tamaño: " + this.tamaño + "\n" + "TOTAL: " + this.totalFormat + " €";
+        String texto = "PIZZERIA MISLATA - " + hoy + "\n" + "-------------------------------------------------" + "\n" + "Masa: " + " " + this.masa + "€ - " + masa + "\n" + "Tipo: " + " " + this.precioTipoPizza + "€ - " + this.tipo + "\n" + "Ingredientes extra: " + " " + this.precioIngredientes + "€ - " + ingredientes + "\n" + "Tamaño: " + this.tamaño + "\n" + "TOTAL: " + this.totalFormat + " €";
         return texto;
     }
+
+
 }

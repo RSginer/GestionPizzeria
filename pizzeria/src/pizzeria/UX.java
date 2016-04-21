@@ -5,10 +5,14 @@
  */
 package pizzeria;
 
+import java.awt.Component;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,6 +43,10 @@ public class UX extends javax.swing.JFrame {
     private void initComponents() {
 
         GrupoMasa = new javax.swing.ButtonGroup();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         MasaNormal = new javax.swing.JRadioButton();
@@ -57,6 +65,7 @@ public class UX extends javax.swing.JFrame {
         numTipoPizza = new javax.swing.JLabel();
         etiquetaIngredientesExtra = new javax.swing.JLabel();
         numIngredientesExtra = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         etiquetaTotal = new javax.swing.JLabel();
         total = new javax.swing.JTextField();
         eur = new javax.swing.JLabel();
@@ -65,11 +74,19 @@ public class UX extends javax.swing.JFrame {
         ticket = new javax.swing.JTextArea();
         nombre = new javax.swing.JButton();
         Imprimir = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        cambiarCarta = new javax.swing.JMenu();
+        barraDeMenu = new javax.swing.JMenuBar();
+        menuOpciones = new javax.swing.JMenu();
+        cambiarPrecios = new javax.swing.JMenuItem();
+
+        jMenu1.setText("jMenu1");
+
+        jMenu2.setText("jMenu2");
+
+        jMenu5.setText("jMenu5");
+
+        jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 0, 0));
 
@@ -80,7 +97,6 @@ public class UX extends javax.swing.JFrame {
         GrupoMasa.add(MasaNormal);
         MasaNormal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         MasaNormal.setForeground(new java.awt.Color(255, 255, 255));
-        MasaNormal.setSelected(true);
         MasaNormal.setText("Normal");
         MasaNormal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         MasaNormal.addActionListener(new java.awt.event.ActionListener() {
@@ -109,14 +125,14 @@ public class UX extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(MasaNormal)
                     .addComponent(MasaIntegral))
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGap(0, 37, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(MasaNormal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, Short.MAX_VALUE)
                 .addComponent(MasaIntegral)
                 .addContainerGap())
         );
@@ -140,7 +156,7 @@ public class UX extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tamaño, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                .addComponent(tamaño, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -170,7 +186,7 @@ public class UX extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tipoPizza, 0, 107, Short.MAX_VALUE)
+                .addComponent(tipoPizza, 0, 168, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -206,22 +222,22 @@ public class UX extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ingredientesExtra, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                .addComponent(ingredientesExtra, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ingredientesExtra, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(ingredientesExtra, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel6.setBackground(new java.awt.Color(255, 0, 0));
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Javapizza", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 3, 18), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pizza", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 1, 18), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel6.setForeground(new java.awt.Color(255, 255, 255));
 
-        etiquetaMasa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        etiquetaMasa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         etiquetaMasa.setForeground(new java.awt.Color(255, 255, 255));
         etiquetaMasa.setText("Masa");
 
@@ -229,7 +245,7 @@ public class UX extends javax.swing.JFrame {
         masa.setForeground(new java.awt.Color(255, 255, 255));
         masa.setText("0");
 
-        etiquetaTipoPizza.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        etiquetaTipoPizza.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         etiquetaTipoPizza.setForeground(new java.awt.Color(255, 255, 255));
         etiquetaTipoPizza.setText("Tipo pizza");
 
@@ -237,7 +253,7 @@ public class UX extends javax.swing.JFrame {
         numTipoPizza.setForeground(new java.awt.Color(255, 255, 255));
         numTipoPizza.setText("0");
 
-        etiquetaIngredientesExtra.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        etiquetaIngredientesExtra.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         etiquetaIngredientesExtra.setForeground(new java.awt.Color(255, 255, 255));
         etiquetaIngredientesExtra.setText("Ingredientes extra");
 
@@ -245,31 +261,37 @@ public class UX extends javax.swing.JFrame {
         numIngredientesExtra.setForeground(new java.awt.Color(255, 255, 255));
         numIngredientesExtra.setText("0");
 
+        jLabel2.setFont(new java.awt.Font("Droid Sans", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Precio");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(etiquetaMasa)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(masa))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(etiquetaTipoPizza)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(numTipoPizza))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(etiquetaIngredientesExtra)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(numIngredientesExtra)))
+                    .addComponent(etiquetaIngredientesExtra)
+                    .addComponent(etiquetaTipoPizza)
+                    .addComponent(etiquetaMasa))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(numTipoPizza)
+                            .addComponent(masa)
+                            .addComponent(numIngredientesExtra))
+                        .addGap(13, 13, 13))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etiquetaMasa)
                     .addComponent(masa))
@@ -277,10 +299,10 @@ public class UX extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etiquetaTipoPizza)
                     .addComponent(numTipoPizza))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(etiquetaIngredientesExtra)
-                    .addComponent(numIngredientesExtra))
+                    .addComponent(numIngredientesExtra)
+                    .addComponent(etiquetaIngredientesExtra))
                 .addGap(0, 8, Short.MAX_VALUE))
         );
 
@@ -327,7 +349,6 @@ public class UX extends javax.swing.JFrame {
 
         Imprimir.setBackground(new java.awt.Color(153, 153, 153));
         Imprimir.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Imprimir.setForeground(new java.awt.Color(51, 51, 51));
         Imprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pizzeria/imprimir.png"))); // NOI18N
         Imprimir.setText("Imprimir");
         Imprimir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -348,11 +369,11 @@ public class UX extends javax.swing.JFrame {
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
@@ -363,21 +384,19 @@ public class UX extends javax.swing.JFrame {
                         .addComponent(eur, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(19, 19, 19))
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Imprimir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(Imprimir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -392,20 +411,30 @@ public class UX extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jMenuBar1.setBackground(new java.awt.Color(153, 0, 0));
-        jMenuBar1.setForeground(new java.awt.Color(255, 255, 255));
+        barraDeMenu.setFocusable(false);
+        barraDeMenu.setInheritsPopupMenu(true);
+        barraDeMenu.setMinimumSize(new java.awt.Dimension(37, 40));
 
-        cambiarCarta.setBackground(new java.awt.Color(255, 0, 0));
-        cambiarCarta.setText("Cambiar carta");
-        cambiarCarta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cambiarCarta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cambiarCartaMouseClicked(evt);
+        menuOpciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pizzeria/opciones.png"))); // NOI18N
+        menuOpciones.setText("Opciones");
+        menuOpciones.setToolTipText("");
+        menuOpciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        cambiarPrecios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.CTRL_MASK));
+        cambiarPrecios.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        cambiarPrecios.setForeground(new java.awt.Color(0, 0, 0));
+        cambiarPrecios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pizzeria/euro.png"))); // NOI18N
+        cambiarPrecios.setText("Cambiar precios");
+        cambiarPrecios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cambiarPreciosActionPerformed(evt);
             }
         });
-        jMenuBar1.add(cambiarCarta);
+        menuOpciones.add(cambiarPrecios);
 
-        setJMenuBar(jMenuBar1);
+        barraDeMenu.add(menuOpciones);
+
+        setJMenuBar(barraDeMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -426,7 +455,7 @@ public class UX extends javax.swing.JFrame {
         p.setMasa(9);
         p.calcularPrecio();
         this.total.setText(p.totalFormat);
-         this.ticket.setText(p.pedido());
+        this.ticket.setText(p.pedido());
     }//GEN-LAST:event_MasaNormalActionPerformed
 
     private void MasaIntegralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MasaIntegralActionPerformed
@@ -434,7 +463,7 @@ public class UX extends javax.swing.JFrame {
         p.setMasa(9.5);
         p.calcularPrecio();
         this.total.setText(p.totalFormat);
-         this.ticket.setText(p.pedido());
+        this.ticket.setText(p.pedido());
     }//GEN-LAST:event_MasaIntegralActionPerformed
 
     private void tipoPizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoPizzaActionPerformed
@@ -444,7 +473,7 @@ public class UX extends javax.swing.JFrame {
         this.numTipoPizza.setText(precioTipoPizza + "");
         p.calcularPrecio();
         this.total.setText(p.totalFormat);
-         this.ticket.setText(p.pedido());
+        this.ticket.setText(p.pedido());
     }//GEN-LAST:event_tipoPizzaActionPerformed
 
     private void listaDeIngredientesExtraValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaDeIngredientesExtraValueChanged
@@ -462,24 +491,26 @@ public class UX extends javax.swing.JFrame {
         p.setTamaño(tamañoPizza);
         p.calcularPrecio();
         this.total.setText(p.totalFormat);
-         this.ticket.setText(p.pedido());
+        this.ticket.setText(p.pedido());
     }//GEN-LAST:event_tamañoStateChanged
 
     private void ImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImprimirActionPerformed
-      
-            
+        boolean ticketGenerado = false;
         try {
-            p.imprimirTicket(contador);
-            contador++;
+            ticketGenerado = p.generarTicket();
         } catch (IOException ex) {
             Logger.getLogger(UX.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        if (ticketGenerado) {
+            JOptionPane.showMessageDialog(null, "Ticket generado", "Ticket generado", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_ImprimirActionPerformed
 
-    private void cambiarCartaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cambiarCartaMouseClicked
+    private void cambiarPreciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarPreciosActionPerformed
+        SelectorDeArchivo s = new SelectorDeArchivo();
+        s.seleccionar(evt);
         
-    }//GEN-LAST:event_cambiarCartaMouseClicked
+    }//GEN-LAST:event_cambiarPreciosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -515,7 +546,7 @@ public class UX extends javax.swing.JFrame {
             }
         });
     }
-    int contador=0;
+    int contador = 0;
     double precioTipoPizza = 0;
     double precioIngredientes = 0;
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -523,14 +554,19 @@ public class UX extends javax.swing.JFrame {
     private javax.swing.JButton Imprimir;
     private javax.swing.JRadioButton MasaIntegral;
     private javax.swing.JRadioButton MasaNormal;
-    private javax.swing.JMenu cambiarCarta;
+    private javax.swing.JMenuBar barraDeMenu;
+    private javax.swing.JMenuItem cambiarPrecios;
     private javax.swing.JLabel etiquetaIngredientesExtra;
     private javax.swing.JLabel etiquetaMasa;
     private javax.swing.JLabel etiquetaTipoPizza;
     private javax.swing.JLabel etiquetaTotal;
     private javax.swing.JLabel eur;
     private javax.swing.JScrollPane ingredientesExtra;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -541,6 +577,7 @@ public class UX extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList listaDeIngredientesExtra;
     private javax.swing.JLabel masa;
+    private javax.swing.JMenu menuOpciones;
     private javax.swing.JButton nombre;
     private javax.swing.JLabel numIngredientesExtra;
     private javax.swing.JLabel numTipoPizza;
