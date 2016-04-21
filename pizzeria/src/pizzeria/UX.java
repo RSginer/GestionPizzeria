@@ -451,16 +451,16 @@ public class UX extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MasaNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MasaNormalActionPerformed
-        this.masa.setText("9");
-        p.setMasa(9);
+        this.masa.setText(""+p.calculaMasa("normal"));
+        p.setMasa(p.calculaMasa("normal"));
         p.calcularPrecio();
         this.total.setText(p.totalFormat);
         this.ticket.setText(p.pedido());
     }//GEN-LAST:event_MasaNormalActionPerformed
 
     private void MasaIntegralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MasaIntegralActionPerformed
-        this.masa.setText("9.5");
-        p.setMasa(9.5);
+        this.masa.setText(""+p.calculaMasa("integral"));
+        p.setMasa(p.calculaMasa("integral"));
         p.calcularPrecio();
         this.total.setText(p.totalFormat);
         this.ticket.setText(p.pedido());
@@ -508,7 +508,9 @@ public class UX extends javax.swing.JFrame {
 
     private void cambiarPreciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarPreciosActionPerformed
         SelectorDeArchivo s = new SelectorDeArchivo();
-        p.cargarPrecios(s.seleccionar(evt));
+         if ( p.cargarPrecios(s.seleccionar(evt))) {
+            JOptionPane.showMessageDialog(null, "Precios cambiados", "Precios cambiados", JOptionPane.INFORMATION_MESSAGE);
+        }
     }//GEN-LAST:event_cambiarPreciosActionPerformed
 
     /**
