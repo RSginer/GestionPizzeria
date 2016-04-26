@@ -29,12 +29,7 @@ public class UX extends javax.swing.JFrame {
         String t = (String) this.tipoPizza.getSelectedItem();
         String tm = (String) this.tamaño.getValue();
         p = new Pizza(0, t, tm, this.listaDeIngredientesExtra.getSelectedValuesList());
-        SelectorDeArchivo selectorDeArchivo = new SelectorDeArchivo();
-        if (p.cargarPrecios(selectorDeArchivo.seleccionar())) {
-            JOptionPane.showMessageDialog(null, "Precios cambiados", "Precios cambiados", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(null, "Error al cambiar precios", "Error al cambiar precios", JOptionPane.ERROR_MESSAGE);
-        }
+       
 
     }
 
@@ -82,6 +77,7 @@ public class UX extends javax.swing.JFrame {
         barraDeMenu = new javax.swing.JMenuBar();
         menuOpciones = new javax.swing.JMenu();
         cambiarPrecios = new javax.swing.JMenuItem();
+        info = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -437,7 +433,7 @@ public class UX extends javax.swing.JFrame {
         menuOpciones.setToolTipText("");
         menuOpciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        cambiarPrecios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.CTRL_MASK));
+        cambiarPrecios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         cambiarPrecios.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         cambiarPrecios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pizzeria/euro.png"))); // NOI18N
         cambiarPrecios.setText("Cambiar precios");
@@ -447,6 +443,16 @@ public class UX extends javax.swing.JFrame {
             }
         });
         menuOpciones.add(cambiarPrecios);
+
+        info.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.ALT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+        info.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pizzeria/info.png"))); // NOI18N
+        info.setText("Version 1.0");
+        info.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                infoActionPerformed(evt);
+            }
+        });
+        menuOpciones.add(info);
 
         barraDeMenu.add(menuOpciones);
 
@@ -537,6 +543,10 @@ public class UX extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreActionPerformed
 
+    private void infoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoActionPerformed
+         JOptionPane.showMessageDialog(null,"Versión: 1.0 \n\nPrograma bajo licencia MIT \n\n Página oficial: http://rsginer.github.io/GestionPizzeria/ \n\n Creado por : Rubén Soler \n\n Github: https://github.com/RSginer","Versión 1.0", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_infoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -586,6 +596,7 @@ public class UX extends javax.swing.JFrame {
     private javax.swing.JLabel etiquetaTipoPizza;
     private javax.swing.JLabel etiquetaTotal;
     private javax.swing.JLabel eur;
+    private javax.swing.JMenuItem info;
     private javax.swing.JScrollPane ingredientesExtra;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
