@@ -7,8 +7,8 @@ import javax.swing.*;
 
 public class SelectorDeArchivo extends JPanel
                               implements ActionListener {
-    static private String newline = "\n";
-    private JTextArea log;
+    private static final String newline = "\n";
+    private final JTextArea log;
     private JFileChooser fc;
 
     public SelectorDeArchivo() {

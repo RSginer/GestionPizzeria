@@ -5,13 +5,10 @@
  */
 package pizzeria;
 
-import java.awt.Component;
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,20 +19,17 @@ public class UX extends javax.swing.JFrame {
 
     Pizza p;
 
-    /**
-     * Creates new form UX
-     */
     public UX() {
         initComponents();
         String t = (String) this.tipoPizza.getSelectedItem();
         String tm = (String) this.tamaño.getValue();
         p = new Pizza(0, t, tm, this.listaDeIngredientesExtra.getSelectedValuesList());
-          SelectorDeArchivo selectorDeArchivo = new SelectorDeArchivo();
-         if ( p.cargarPrecios(selectorDeArchivo.seleccionar())) {
+        SelectorDeArchivo selectorDeArchivo = new SelectorDeArchivo();
+        if (p.cargarPrecios(selectorDeArchivo.seleccionar())) {
             JOptionPane.showMessageDialog(null, "Precios cambiados", "Precios cambiados", JOptionPane.INFORMATION_MESSAGE);
-        }else{
-             JOptionPane.showMessageDialog(null, "Error al cambiar precios", "Error al cambiar precios", JOptionPane.ERROR_MESSAGE);
-         }
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al cambiar precios", "Error al cambiar precios", JOptionPane.ERROR_MESSAGE);
+        }
 
     }
 
@@ -466,7 +460,7 @@ public class UX extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MasaNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MasaNormalActionPerformed
-        this.masa.setText(""+p.calculaMasa("Normal"));
+        this.masa.setText("" + p.calculaMasa("Normal"));
         p.setMasa(p.calculaMasa("Normal"));
         p.calcularPrecio();
         this.total.setText(p.totalFormat);
@@ -474,7 +468,7 @@ public class UX extends javax.swing.JFrame {
     }//GEN-LAST:event_MasaNormalActionPerformed
 
     private void MasaIntegralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MasaIntegralActionPerformed
-        this.masa.setText(""+p.calculaMasa("Integral"));
+        this.masa.setText("" + p.calculaMasa("Integral"));
         p.setMasa(p.calculaMasa("Integral"));
         p.calcularPrecio();
         this.total.setText(p.totalFormat);
@@ -516,18 +510,18 @@ public class UX extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(UX.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if (ticketGenerado!=null) {
+        if (ticketGenerado != null) {
             JOptionPane.showMessageDialog(null, "Ticket generado " + ticketGenerado + "", "Ticket generado " + ticketGenerado + "", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_ImprimirActionPerformed
 
     private void cambiarPreciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarPreciosActionPerformed
         SelectorDeArchivo s = new SelectorDeArchivo();
-         if (p.cargarPrecios(s.seleccionar())) {
+        if (p.cargarPrecios(s.seleccionar())) {
             JOptionPane.showMessageDialog(null, "Precios cambiados", "Precios cambiados", JOptionPane.INFORMATION_MESSAGE);
-        }else{
-             JOptionPane.showMessageDialog(null, "Error al cambiar precios", "Error al cambiar precios", JOptionPane.ERROR_MESSAGE);
-         }
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al cambiar precios", "Error al cambiar precios", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_cambiarPreciosActionPerformed
 
     /**

@@ -7,18 +7,14 @@ package pizzeria;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Collector;
-import java.util.stream.Stream;
 
 /**
  *
@@ -238,7 +234,7 @@ public class Pizza {
         } catch (IOException | NumberFormatException e) {
 
         }
-        
+
         return cargado;
     }
 
