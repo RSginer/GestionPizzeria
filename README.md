@@ -6,7 +6,7 @@ Dargargar v1.0 : https://github.com/RSginer/GestionPizzeria/blob/master/pizzeria
 
 Programa bajo licencia MIT
 
-Al ejecutarlo se abrira un selector de archivo para cargar los precios,
+En el menu de opciones abrira un selector de archivo para cargar los precios,
 el archivo debe ser un archivo de texto plano con el siguiente formato:
 
 componente:(double precio)
