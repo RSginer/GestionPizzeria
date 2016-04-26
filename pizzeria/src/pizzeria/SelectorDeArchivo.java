@@ -13,6 +13,8 @@ public class SelectorDeArchivo extends JPanel
 
     public SelectorDeArchivo() {
         super(new BorderLayout());
+            
+        setVisible(true);
         log = new JTextArea(5,20);
         log.setMargin(new Insets(5,5,5,5));
         log.setEditable(false);

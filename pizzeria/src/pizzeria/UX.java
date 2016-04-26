@@ -5,6 +5,8 @@
  */
 package pizzeria;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
@@ -16,10 +18,13 @@ import javax.swing.JOptionPane;
  * @author daw1
  */
 public class UX extends javax.swing.JFrame {
-
+    Image i = Toolkit.getDefaultToolkit().getImage(getClass().getResource("icono.png"));
+         
     Pizza p;
 
     public UX() {
+        
+        setIconImage(i);
         initComponents();
         String t = (String) this.tipoPizza.getSelectedItem();
         String tm = (String) this.tamaño.getValue();
@@ -366,6 +371,11 @@ public class UX extends javax.swing.JFrame {
         nombre.setForeground(new java.awt.Color(255, 255, 255));
         nombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pizzeria/logolavera-400x100.png"))); // NOI18N
         nombre.setToolTipText("");
+        nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -429,7 +439,6 @@ public class UX extends javax.swing.JFrame {
 
         cambiarPrecios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.CTRL_MASK));
         cambiarPrecios.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        cambiarPrecios.setForeground(new java.awt.Color(0, 0, 0));
         cambiarPrecios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pizzeria/euro.png"))); // NOI18N
         cambiarPrecios.setText("Cambiar precios");
         cambiarPrecios.addActionListener(new java.awt.event.ActionListener() {
@@ -523,6 +532,10 @@ public class UX extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error al cambiar precios", "Error al cambiar precios", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_cambiarPreciosActionPerformed
+
+    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreActionPerformed
 
     /**
      * @param args the command line arguments
