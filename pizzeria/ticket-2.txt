@@ -1,7 +1,0 @@
-PIZZERIA MISLATA - 2016-04-26
--------------------------------------------------
-Masa:  null € - 0.0
-Tipo:  7.0€ - Barbacoa
-Ingredientes extra:  0.0€ - Ninguno
-Tamaño: Pequeña
-TOTAL: 7 €
