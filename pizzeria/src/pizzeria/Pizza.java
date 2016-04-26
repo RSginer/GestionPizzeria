@@ -173,71 +173,72 @@ public class Pizza {
         return tamaño;
     }
 
-    public boolean generarTicket() throws IOException {
+    public String generarTicket() throws IOException {
         boolean generado = false;
-        String nombreticket = "ticket-" + this.contador + ".txt";
-        try (BufferedWriter ticket = new BufferedWriter(new FileWriter(nombreticket))) {
+        String nombreticket = null;
+        try (BufferedWriter ticket = new BufferedWriter(new FileWriter("ticket-" + this.contador + ".txt"))) {
             ticket.write(this.pedido());
+            nombreticket = "ticket-" + this.contador + ".txt";
             ticket.close();
             this.contador++;
             generado = true;
         } catch (IOException ex) {
             Logger.getLogger(UX.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return generado;
+        return nombreticket;
     }
 
     public boolean cargarPrecios(String rutaArchivo) {
         boolean cargado = false;
         try {
-            BufferedReader lector = new BufferedReader(new FileReader(rutaArchivo));
-            String linea;
-            while ((linea = lector.readLine()) != null) {
-                String[] trozos = linea.split(":");
-                for (int i = 0; i < trozos.length; i++) {
-                    String componente = trozos[0];
-                    double precio = Double.parseDouble(trozos[1]);
-                    if (componente.equalsIgnoreCase("Basica")) {
-                        this.precioBasica = precio;
-                        cargado = true;
-                    } else if (componente.equalsIgnoreCase("CuatroQuesos")) {
-                        this.precioCuatroQuesos = precio;
-                        cargado = true;
-                    } else if (componente.equalsIgnoreCase("Barbacoa")) {
-                        this.precioBarbacoa = precio;
-                        cargado = true;
-                    } else if (componente.equalsIgnoreCase("Mexicana")) {
-                        this.precioMexicana = precio;
-                        cargado = true;
-                    } else if (componente.equalsIgnoreCase("Normal")) {
-                        this.precioMasaNormal = precio;
-                        cargado = true;
-                    } else if (componente.equalsIgnoreCase("Integral")) {
-                        this.precioMasaIntegral = precio;
-                        cargado = true;
-                    } else if (componente.equalsIgnoreCase("Jamon")) {
-                        this.precioJamon = precio;
-                        cargado = true;
-                    } else if (componente.equalsIgnoreCase("Olivas")) {
-                        this.precioOlivas = precio;
-                        cargado = true;
-                    } else if (componente.equalsIgnoreCase("Cebolla")) {
-                        this.precioCebolla = precio;
-                        cargado = true;
-                    } else if (componente.equalsIgnoreCase("Tomate")) {
-                        this.precioTomate = precio;
-                        cargado = true;
-                    } else if (componente.equalsIgnoreCase("Queso")) {
-                        this.precioQueso = precio;
-                        cargado = true;
+            try (BufferedReader lector = new BufferedReader(new FileReader(rutaArchivo))) {
+                String linea;
+                while ((linea = lector.readLine()) != null) {
+                    String[] trozos = linea.split(":");
+                    for (String trozo : trozos) {
+                        String componente = trozos[0];
+                        double precio = Double.parseDouble(trozos[1]);
+                        if (componente.equalsIgnoreCase("Basica")) {
+                            this.precioBasica = precio;
+                            cargado = true;
+                        } else if (componente.equalsIgnoreCase("CuatroQuesos")) {
+                            this.precioCuatroQuesos = precio;
+                            cargado = true;
+                        } else if (componente.equalsIgnoreCase("Barbacoa")) {
+                            this.precioBarbacoa = precio;
+                            cargado = true;
+                        } else if (componente.equalsIgnoreCase("Mexicana")) {
+                            this.precioMexicana = precio;
+                            cargado = true;
+                        } else if (componente.equalsIgnoreCase("Normal")) {
+                            this.precioMasaNormal = precio;
+                            cargado = true;
+                        } else if (componente.equalsIgnoreCase("Integral")) {
+                            this.precioMasaIntegral = precio;
+                            cargado = true;
+                        } else if (componente.equalsIgnoreCase("Jamon")) {
+                            this.precioJamon = precio;
+                            cargado = true;
+                        } else if (componente.equalsIgnoreCase("Olivas")) {
+                            this.precioOlivas = precio;
+                            cargado = true;
+                        } else if (componente.equalsIgnoreCase("Cebolla")) {
+                            this.precioCebolla = precio;
+                            cargado = true;
+                        } else if (componente.equalsIgnoreCase("Tomate")) {
+                            this.precioTomate = precio;
+                            cargado = true;
+                        } else if (componente.equalsIgnoreCase("Queso")) {
+                            this.precioQueso = precio;
+                            cargado = true;
+                        }
                     }
                 }
             }
-            lector.close();
         } catch (IOException | NumberFormatException e) {
 
         }
-
+        
         return cargado;
     }
 
@@ -253,7 +254,7 @@ public class Pizza {
         } else {
             ingredientes = this.listaIngredientes.toString();
         }
-        String texto = "PIZZERIA MISLATA - " + hoy + "\n" + "-------------------------------------------------" + "\n" + "Masa: " + " " + this.nombreMasa + " € - " + this.masa + "\n" + "Tipo: " + " " + this.precioTipoPizza + "€ - " + this.tipo + "\n" + "Ingredientes extra: " + " " + this.precioIngredientes + "€ - " + ingredientes + "\n" + "Tamaño: " + this.tamaño + "\n" + "TOTAL: " + this.totalFormat + " €";
+        String texto = "PIZZERIA MISLATA - " + hoy + "\r\n" + "-------------------------------------------------" + "\r\n" + "Masa: " + " " + this.nombreMasa + " € - " + this.masa + "\r\n" + "Tipo: " + " " + this.precioTipoPizza + "€ - " + this.tipo + "\r\n" + "Ingredientes extra: " + " " + this.precioIngredientes + "€ - " + ingredientes + "\r\n" + "Tamaño: " + this.tamaño + "\r\n" + "TOTAL: " + this.totalFormat + " €";
         return texto;
     }
 

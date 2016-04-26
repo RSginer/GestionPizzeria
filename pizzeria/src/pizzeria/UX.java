@@ -30,6 +30,12 @@ public class UX extends javax.swing.JFrame {
         String t = (String) this.tipoPizza.getSelectedItem();
         String tm = (String) this.tamaño.getValue();
         p = new Pizza(0, t, tm, this.listaDeIngredientesExtra.getSelectedValuesList());
+          SelectorDeArchivo selectorDeArchivo = new SelectorDeArchivo();
+         if ( p.cargarPrecios(selectorDeArchivo.seleccionar())) {
+            JOptionPane.showMessageDialog(null, "Precios cambiados", "Precios cambiados", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+             JOptionPane.showMessageDialog(null, "Error al cambiar precios", "Error al cambiar precios", JOptionPane.ERROR_MESSAGE);
+         }
 
     }
 
@@ -504,22 +510,24 @@ public class UX extends javax.swing.JFrame {
     }//GEN-LAST:event_tamañoStateChanged
 
     private void ImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImprimirActionPerformed
-        boolean ticketGenerado = false;
+        String ticketGenerado = null;
         try {
             ticketGenerado = p.generarTicket();
         } catch (IOException ex) {
             Logger.getLogger(UX.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if (ticketGenerado) {
-            JOptionPane.showMessageDialog(null, "Ticket generado", "Ticket generado", JOptionPane.INFORMATION_MESSAGE);
+        if (ticketGenerado!=null) {
+            JOptionPane.showMessageDialog(null, "Ticket generado " + ticketGenerado + "", "Ticket generado " + ticketGenerado + "", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_ImprimirActionPerformed
 
     private void cambiarPreciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarPreciosActionPerformed
         SelectorDeArchivo s = new SelectorDeArchivo();
-         if ( p.cargarPrecios(s.seleccionar(evt))) {
+         if (p.cargarPrecios(s.seleccionar())) {
             JOptionPane.showMessageDialog(null, "Precios cambiados", "Precios cambiados", JOptionPane.INFORMATION_MESSAGE);
-        }
+        }else{
+             JOptionPane.showMessageDialog(null, "Error al cambiar precios", "Error al cambiar precios", JOptionPane.ERROR_MESSAGE);
+         }
     }//GEN-LAST:event_cambiarPreciosActionPerformed
 
     /**

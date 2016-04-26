@@ -22,11 +22,11 @@ public class SelectorDeArchivo extends JPanel
         add(sendButton, BorderLayout.PAGE_START);
         add(logScrollPane, BorderLayout.CENTER);
     }
-    public String seleccionar(ActionEvent e) {
+    public String seleccionar() {
         String ruta="";
-        if (fc == null) {
+     
             fc = new JFileChooser();
-        }
+        
         int returnVal = fc.showDialog(SelectorDeArchivo.this,"Abrir");
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File file = fc.getSelectedFile();
