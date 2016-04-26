@@ -1,5 +1,5 @@
 {
-  "name": "Gestionpizzeria",
+  "name": "Gestion Pizzeria",
   "tagline": "Programa de gestion de una pizzeria en swing",
   "body": "# Gestion pizzeria\r\n\r\n# **Ejecutable v1.0 :**  [Descargar](https://github.com/RSginer/GestionPizzeria/blob/master/pizzeria/ejecutable/pizzeria-1.0.zip?raw=true)\r\n\r\n![screenshot](https://raw.githubusercontent.com/RSginer/GestionPizzeria/master/pizzeria/screenshot/screenshot.PNG)\r\n### Programa bajo licencia MIT \r\n\r\nAl ejecutarlo se abrira un selector de archivo para cargar los precios, \r\nel archivo debe ser un archivo de texto plano con el siguiente formato: \r\n\r\ncomponente:(double precio) \r\n\r\n**EJEMPO:** \r\n\r\n![precios](https://raw.githubusercontent.com/RSginer/GestionPizzeria/master/pizzeria/screenshot/precios-screenshot.PNG)\r\n",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
